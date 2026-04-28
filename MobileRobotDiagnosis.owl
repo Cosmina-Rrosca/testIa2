@@ -125,28 +125,28 @@
         <rdfs:label xml:lang="ro">are valoare citire</rdfs:label>
         <rdfs:comment>Valoarea citită de la un senzor</rdfs:comment>
         <rdfs:domain rdf:resource="#Senzor"/>
-        <rdfs:range rdf:resource="&xsd;float"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
     </owl:DatatypeProperty>
 
     <owl:DatatypeProperty rdf:about="#areNivelBaterie">
         <rdfs:label xml:lang="ro">are nivel baterie</rdfs:label>
         <rdfs:comment>Nivelul bateriei ca procent</rdfs:comment>
         <rdfs:domain rdf:resource="#Componenta"/>
-        <rdfs:range rdf:resource="&xsd;integer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     </owl:DatatypeProperty>
 
     <owl:DatatypeProperty rdf:about="#areCodEroare">
         <rdfs:label xml:lang="ro">are cod eroare</rdfs:label>
         <rdfs:comment>Codul de eroare asociat unui defect</rdfs:comment>
         <rdfs:domain rdf:resource="#Defect"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
 
     <owl:DatatypeProperty rdf:about="#areTimpDetectie">
         <rdfs:label xml:lang="ro">are timp detecție</rdfs:label>
         <rdfs:comment>Timpul când a fost detectat defectul</rdfs:comment>
         <rdfs:domain rdf:resource="#Defect"/>
-        <rdfs:range rdf:resource="&xsd;dateTime"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
     </owl:DatatypeProperty>
 
     <!-- =========================================== -->
@@ -156,39 +156,39 @@
     <!-- Indivizi din clasa SenzorLidar -->
     <owl:NamedIndividual rdf:about="#lidarFrontal">
         <rdf:type rdf:resource="#SenzorLidar"/>
-        <areValoareCitire rdf:datatype="&xsd;float">2.5</areValoareCitire>
+        <areValoareCitire rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.5</areValoareCitire>
         <rdfs:label xml:lang="ro">LiDAR Frontal</rdfs:label>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="#lidarPosterior">
         <rdf:type rdf:resource="#SenzorLidar"/>
-        <areValoareCitire rdf:datatype="&xsd;float">1.8</areValoareCitire>
+        <areValoareCitire rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.8</areValoareCitire>
         <rdfs:label xml:lang="ro">LiDAR Posterior</rdfs:label>
     </owl:NamedIndividual>
 
     <!-- Indivizi din clasa SenzorUltrasonic -->
     <owl:NamedIndividual rdf:about="#ultrasonicStanga">
         <rdf:type rdf:resource="#SenzorUltrasonic"/>
-        <areValoareCitire rdf:datatype="&xsd;float">0.5</areValoareCitire>
+        <areValoareCitire rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.5</areValoareCitire>
         <rdfs:label xml:lang="ro">Senzor Ultrasonic Stânga</rdfs:label>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="#ultrasonicDreapta">
         <rdf:type rdf:resource="#SenzorUltrasonic"/>
-        <areValoareCitire rdf:datatype="&xsd;float">0.7</areValoareCitire>
+        <areValoareCitire rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.7</areValoareCitire>
         <rdfs:label xml:lang="ro">Senzor Ultrasonic Dreapta</rdfs:label>
     </owl:NamedIndividual>
 
     <!-- Indivizi din clasa Motor -->
     <owl:NamedIndividual rdf:about="#motorStanga">
         <rdf:type rdf:resource="#Motor"/>
-        <areNivelBaterie rdf:datatype="&xsd;integer">85</areNivelBaterie>
+        <areNivelBaterie rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">85</areNivelBaterie>
         <rdfs:label xml:lang="ro">Motor Stânga</rdfs:label>
     </owl:NamedIndividual>
 
     <owl:NamedIndividual rdf:about="#motorDreapta">
         <rdf:type rdf:resource="#Motor"/>
-        <areNivelBaterie rdf:datatype="&xsd;integer">90</areNivelBaterie>
+        <areNivelBaterie rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90</areNivelBaterie>
         <rdfs:label xml:lang="ro">Motor Dreapta</rdfs:label>
     </owl:NamedIndividual>
 
