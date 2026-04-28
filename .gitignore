@@ -1,0 +1,1 @@
+Nothing should be ignored in this case, as the only modified file is a source file (.owl) without any build artifacts, dependencies, or temporary files in the changes.
