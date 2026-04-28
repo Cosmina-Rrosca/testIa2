@@ -1,0 +1,245 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/robotdiag/ontologies/2024/1/MobileRobotDiagnosis#"
+     xml:base="http://www.semanticweb.org/robotdiag/ontologies/2024/1/MobileRobotDiagnosis"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+    <owl:Ontology rdf:about="http://www.semanticweb.org/robotdiag/ontologies/2024/1/MobileRobotDiagnosis">
+        <rdfs:comment>Ontologie pentru modelarea problemei de diagnoza a robotului mobil</rdfs:comment>
+        <owl:versionInfo>1.0</owl:versionInfo>
+    </owl:Ontology>
+
+    <!-- =========================================== -->
+    <!-- CLASE (10 clase totale)                     -->
+    <!-- =========================================== -->
+
+    <!-- Clasa de baza: Componenta -->
+    <owl:Class rdf:about="#Componenta">
+        <rdfs:label xml:lang="ro">Componentă</rdfs:label>
+        <rdfs:comment>Clasa de bază pentru toate componentele robotului mobil</rdfs:comment>
+    </owl:Class>
+
+    <!-- Clasa de baza: Senzor (derivata din Componenta) -->
+    <owl:Class rdf:about="#Senzor">
+        <rdfs:subClassOf rdf:resource="#Componenta"/>
+        <rdfs:label xml:lang="ro">Senzor</rdfs:label>
+        <rdfs:comment>Senzori utilizați pentru percepția mediului</rdfs:comment>
+    </owl:Class>
+
+    <!-- Clasa de baza: Actuator (derivata din Componenta) -->
+    <owl:Class rdf:about="#Actuator">
+        <rdfs:subClassOf rdf:resource="#Componenta"/>
+        <rdfs:label xml:lang="ro">Actuator</rdfs:label>
+        <rdfs:comment>Actuatoare pentru mișcarea și acțiunea robotului</rdfs:comment>
+    </owl:Class>
+
+    <!-- Clasa de baza: Defect (derivata din Componenta) -->
+    <owl:Class rdf:about="#Defect">
+        <rdfs:subClassOf rdf:resource="#Componenta"/>
+        <rdfs:label xml:lang="ro">Defect</rdfs:label>
+        <rdfs:comment>Clasă pentru reprezentarea defectelor posibile</rdfs:comment>
+    </owl:Class>
+
+    <!-- Clasa derivata: SenzorLidar (din Senzor) -->
+    <owl:Class rdf:about="#SenzorLidar">
+        <rdfs:subClassOf rdf:resource="#Senzor"/>
+        <rdfs:label xml:lang="ro">Senzor LiDAR</rdfs:label>
+        <rdfs:comment>Senzor LiDAR pentru detecția distanțelor și mapping</rdfs:comment>
+    </owl:Class>
+
+    <!-- Clasa derivata: SenzorUltrasonic (din Senzor) -->
+    <owl:Class rdf:about="#SenzorUltrasonic">
+        <rdfs:subClassOf rdf:resource="#Senzor"/>
+        <rdfs:label xml:lang="ro">Senzor Ultrasonic</rdfs:label>
+        <rdfs:comment>Senzor ultrasonic pentru detecția obstacolelor</rdfs:comment>
+    </owl:Class>
+
+    <!-- Clasa derivata: Motor (din Actuator) -->
+    <owl:Class rdf:about="#Motor">
+        <rdfs:subClassOf rdf:resource="#Actuator"/>
+        <rdfs:label xml:lang="ro">Motor</rdfs:label>
+        <rdfs:comment>Motor pentru propulsia robotului</rdfs:comment>
+    </owl:Class>
+
+    <!-- Clasa derivata: Roata (din Actuator) -->
+    <owl:Class rdf:about="#Roata">
+        <rdfs:subClassOf rdf:resource="#Actuator"/>
+        <rdfs:label xml:lang="ro">Roată</rdfs:label>
+        <rdfs:comment>Roți pentru locomoția robotului</rdfs:comment>
+    </owl:Class>
+
+    <!-- Clasa derivata: DefectSenzor (din Defect) -->
+    <owl:Class rdf:about="#DefectSenzor">
+        <rdfs:subClassOf rdf:resource="#Defect"/>
+        <rdfs:label xml:lang="ro">Defect Senzor</rdfs:label>
+        <rdfs:comment>Defecte specifice senzorilor</rdfs:comment>
+    </owl:Class>
+
+    <!-- Clasa derivata: DefectActuator (din Defect) -->
+    <owl:Class rdf:about="#DefectActuator">
+        <rdfs:subClassOf rdf:resource="#Defect"/>
+        <rdfs:label xml:lang="ro">Defect Actuator</rdfs:label>
+        <rdfs:comment>Defecte specifice actuatorilor</rdfs:comment>
+    </owl:Class>
+
+    <!-- =========================================== -->
+    <!-- PROPRIETĂȚI OBIECT (Object Properties)      -->
+    <!-- =========================================== -->
+
+    <owl:ObjectProperty rdf:about="#areDefect">
+        <rdfs:label xml:lang="ro">are defect</rdfs:label>
+        <rdfs:comment>Relație dintre o componentă și un defect</rdfs:comment>
+        <rdfs:domain rdf:resource="#Componenta"/>
+        <rdfs:range rdf:resource="#Defect"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#areParteDin">
+        <rdfs:label xml:lang="ro">are parte din</rdfs:label>
+        <rdfs:comment>Relație de compunere între componente</rdfs:comment>
+        <rdfs:domain rdf:resource="#Componenta"/>
+        <rdfs:range rdf:resource="#Componenta"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#detecteaza">
+        <rdfs:label xml:lang="ro">detectează</rdfs:label>
+        <rdfs:comment>Relație dintre senzor și entitatea detectată</rdfs:comment>
+        <rdfs:domain rdf:resource="#Senzor"/>
+        <rdfs:range rdf:resource="#Componenta"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#actioneaza">
+        <rdfs:label xml:lang="ro">acționează</rdfs:label>
+        <rdfs:comment>Relație dintre actuator și componenta acționată</rdfs:comment>
+        <rdfs:domain rdf:resource="#Actuator"/>
+        <rdfs:range rdf:resource="#Componenta"/>
+    </owl:ObjectProperty>
+
+    <!-- =========================================== -->
+    <!-- PROPRIETĂȚI DE DATE (Data Properties)       -->
+    <!-- =========================================== -->
+
+    <owl:DatatypeProperty rdf:about="#areValoareCitire">
+        <rdfs:label xml:lang="ro">are valoare citire</rdfs:label>
+        <rdfs:comment>Valoarea citită de la un senzor</rdfs:comment>
+        <rdfs:domain rdf:resource="#Senzor"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#areNivelBaterie">
+        <rdfs:label xml:lang="ro">are nivel baterie</rdfs:label>
+        <rdfs:comment>Nivelul bateriei ca procent</rdfs:comment>
+        <rdfs:domain rdf:resource="#Componenta"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#areCodEroare">
+        <rdfs:label xml:lang="ro">are cod eroare</rdfs:label>
+        <rdfs:comment>Codul de eroare asociat unui defect</rdfs:comment>
+        <rdfs:domain rdf:resource="#Defect"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#areTimpDetectie">
+        <rdfs:label xml:lang="ro">are timp detecție</rdfs:label>
+        <rdfs:comment>Timpul când a fost detectat defectul</rdfs:comment>
+        <rdfs:domain rdf:resource="#Defect"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+
+    <!-- =========================================== -->
+    <!-- INDIVIZI (Instances)                        -->
+    <!-- =========================================== -->
+
+    <!-- Indivizi din clasa SenzorLidar -->
+    <owl:NamedIndividual rdf:about="#lidarFrontal">
+        <rdf:type rdf:resource="#SenzorLidar"/>
+        <areValoareCitire rdf:datatype="&xsd;float">2.5</areValoareCitire>
+        <rdfs:label xml:lang="ro">LiDAR Frontal</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#lidarPosterior">
+        <rdf:type rdf:resource="#SenzorLidar"/>
+        <areValoareCitire rdf:datatype="&xsd;float">1.8</areValoareCitire>
+        <rdfs:label xml:lang="ro">LiDAR Posterior</rdfs:label>
+    </owl:NamedIndividual>
+
+    <!-- Indivizi din clasa SenzorUltrasonic -->
+    <owl:NamedIndividual rdf:about="#ultrasonicStanga">
+        <rdf:type rdf:resource="#SenzorUltrasonic"/>
+        <areValoareCitire rdf:datatype="&xsd;float">0.5</areValoareCitire>
+        <rdfs:label xml:lang="ro">Senzor Ultrasonic Stânga</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#ultrasonicDreapta">
+        <rdf:type rdf:resource="#SenzorUltrasonic"/>
+        <areValoareCitire rdf:datatype="&xsd;float">0.7</areValoareCitire>
+        <rdfs:label xml:lang="ro">Senzor Ultrasonic Dreapta</rdfs:label>
+    </owl:NamedIndividual>
+
+    <!-- Indivizi din clasa Motor -->
+    <owl:NamedIndividual rdf:about="#motorStanga">
+        <rdf:type rdf:resource="#Motor"/>
+        <areNivelBaterie rdf:datatype="&xsd;integer">85</areNivelBaterie>
+        <rdfs:label xml:lang="ro">Motor Stânga</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#motorDreapta">
+        <rdf:type rdf:resource="#Motor"/>
+        <areNivelBaterie rdf:datatype="&xsd;integer">90</areNivelBaterie>
+        <rdfs:label xml:lang="ro">Motor Dreapta</rdfs:label>
+    </owl:NamedIndividual>
+
+    <!-- Indivizi din clasa Roata -->
+    <owl:NamedIndividual rdf:about="#roataStangaFata">
+        <rdf:type rdf:resource="#Roata"/>
+        <rdfs:label xml:lang="ro">Roată Stânga Față</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#roataDreaptaFata">
+        <rdf:type rdf:resource="#Roata"/>
+        <rdfs:label xml:lang="ro">Roată Dreapta Față</rdfs:label>
+    </owl:NamedIndividual>
+
+    <!-- Indivizi din clasa DefectSenzor -->
+    <owl:NamedIndividual rdf:about="#defectCalibrareLidar">
+        <rdf:type rdf:resource="#DefectSenzor"/>
+        <areCodEroare>E001</areCodEroare>
+        <rdfs:label xml:lang="ro">Defect Calibrare LiDAR</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#defectCitireUltrasonic">
+        <rdf:type rdf:resource="#DefectSenzor"/>
+        <areCodEroare>E002</areCodEroare>
+        <rdfs:label xml:lang="ro">Defect Citire Ultrasonic</rdfs:label>
+    </owl:NamedIndividual>
+
+    <!-- Indivizi din clasa DefectActuator -->
+    <owl:NamedIndividual rdf:about="#defectSupraincalzireMotor">
+        <rdf:type rdf:resource="#DefectActuator"/>
+        <areCodEroare>E003</areCodEroare>
+        <rdfs:label xml:lang="ro">Defect Supraîncălzire Motor</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#defectBlocareRoata">
+        <rdf:type rdf:resource="#DefectActuator"/>
+        <areCodEroare>E004</areCodEroare>
+        <rdfs:label xml:lang="ro">Defect Blocare Roată</rdfs:label>
+    </owl:NamedIndividual>
+
+    <!-- Relații între indivizi -->
+    <rdf:Description rdf:about="#lidarFrontal">
+        <areDefect rdf:resource="#defectCalibrareLidar"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#motorStanga">
+        <areDefect rdf:resource="#defectSupraincalzireMotor"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#roataStangaFata">
+        <areDefect rdf:resource="#defectBlocareRoata"/>
+    </rdf:Description>
+
+</rdf:RDF>
